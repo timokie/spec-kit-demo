@@ -1,50 +1,92 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!-- 
+  CONSTITUTION SYNC IMPACT REPORT
+  ============================================================================
+  Version: 1.0.0 (NEW - Initial Constitution)
+  Ratification Date: 2026-01-06
+  Last Amended: 2026-01-06
+  
+  CHANGES:
+  - NEW: Initial constitution created for Spec Kit Demo (frontend-only project)
+  - Principles: 5 core principles defined specific to frontend demo development
+    1. Frontend-First Architecture (pure frontend, no backend)
+    2. Local Data Mocking (required for all API scenarios)
+    3. Component-Driven Development (React/Vue with TypeScript)
+    4. Test Coverage Baseline (unit + integration testing)
+    5. Code Simplicity & YAGNI Principle (no over-engineering)
+  
+  - ADDED SECTION: Frontend Technology Stack (React, TypeScript, Jest, Vite)
+  - ADDED SECTION: Development Workflow & Quality Gates (PR process, code review)
+  
+  TEMPLATE AUDIT:
+  ✅ plan-template.md    - Generic structure, adaptable to frontend projects
+  ✅ spec-template.md    - No changes needed, prioritization/testing focus aligns
+  ✅ tasks-template.md   - No changes needed, user story organization is framework-agnostic
+  
+  FOLLOW-UP:
+  - None deferred; all constitution placeholders resolved
+  - Project may add CI/CD specific details in future amendments (PATCH bump)
+  
+  ============================================================================
+-->
+
+# Spec Kit Demo Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Frontend-First Architecture
+All features are implemented in the frontend using modern web technologies (HTML, CSS, JavaScript/TypeScript). The application is a pure demonstration project with no backend dependencies. No server-side processing, authentication, or persistence layers are required.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Local Data Mocking (Non-Negotiable)
+All API data requests MUST be served by local JSON mock files. Create mock data files in `src/mocks/` for every data source. Use a lightweight HTTP client interceptor or mock service layer to redirect API calls to local JSON. Developers MUST NOT make external API calls in development, testing, or demo scenarios.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Component-Driven Development
+Every UI feature starts as a reusable component with clear responsibilities. Components MUST be:
+- Independently testable and renderable in isolation
+- Accompanied by storybook stories or component documentation
+- Typed with TypeScript (no implicit `any` types)
+- Documented with JSDoc comments describing props, behavior, and usage examples
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Test Coverage Baseline
+Unit tests are required for business logic and component behavior. Focus areas:
+- Component render tests and user interaction tests
+- Mock data consistency validation (schema matching)
+- Component prop validation and edge cases
+- Integration tests for user workflows (form submission, navigation, data display)
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Code Simplicity & YAGNI Principle
+Implement only features required by the current specification. Avoid premature abstraction, over-engineering, or speculative enhancements. Use standard browser APIs and popular lightweight libraries (React, Vue, or Vanilla JS). Prefer clarity over cleverness.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Frontend Technology Stack
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+This project uses:
+- **UI Framework**: React (or equivalent frontend framework)
+- **Language**: TypeScript (strict mode recommended)
+- **Styling**: CSS Modules, Tailwind CSS, or component-scoped styles
+- **Testing**: Jest + React Testing Library (or equivalent)
+- **Build Tool**: Vite or Create React App
+- **Package Manager**: npm or yarn
+- **Mock Data**: Local JSON files in `src/mocks/`
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+No backend, API gateway, or server-side rendering is permitted.
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+## Development Workflow & Quality Gates
+
+1. **Feature branches** follow pattern: `feature/[###-description]` or `fix/[###-description]`
+2. **Commit messages** are descriptive and reference ticket numbers where applicable
+3. **Code review** checklist:
+   - All components have TypeScript types defined
+   - Mock data is used instead of real API calls
+   - Tests pass locally before PR submission
+   - No console errors or warnings in demo
+4. **Demo-Ready State**: All features deployable to static hosting (GitHub Pages, Vercel, Netlify)
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+The constitution supersedes all project practices. Compliance is verified during code review and before merge:
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+- All PRs MUST verify adherence to the five core principles
+- Constitution violations block merge; complexity deviations MUST be justified in PR comments
+- Amendment process: Changes to principles require explicit constitution version bump and team acknowledgment
+- Runtime guidance is provided in `.specify/templates/` and `.github/agents/` files; these are subordinate to the constitution
+
+**Version**: 1.0.0 | **Ratified**: 2026-01-06 | **Last Amended**: 2026-01-06
